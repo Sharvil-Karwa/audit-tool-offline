@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Generator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Data</h2>
+        <input type="file" id="dataFile" accept=".json">
+        <button id="uploadButton">Upload Data</button>
+
+        <h2>Select Data</h2>
+        <form id="dataForm">
+        <label for="selectDepartment">Select Department:</label>
+        <input type="text" id="departmentSearch" placeholder="Search departments">
+        <select id="selectDepartment"></select>
+
+        <label for="selectEquipment">Select Equipment:</label>
+        <input type="text" id="equipmentSearch" placeholder="Search equipments">
+        <select id="selectEquipment"></select>
+
+           
+        <label>Equipment id:</label>
+        <div id="selectEquipmentId"></div>
+
+        <label>Equipment Type:</label>
+        <div id="selectEquipmentType"></div>
+
+        
+        <label>Equipment Location:</label>
+        <div id="selectEquipmentLocation"></div>
+
+        <label for="selectArea">Select Area:</label>
+        <input type="text" id="areaSearch" placeholder="Search areas">
+        <select id="selectArea"></select>
+
+        <label for="selectObservation">Select Observation:</label>
+        <input type="text" id="observationSearch" placeholder="Search Observations">
+        <select id="selectObservation"></select>
+
+        <label for="selectReference">Select Reference:</label>
+        <select id="selectReference"></select>
+
+        <label>Reference Country:</label>
+        <div id="selectReferenceCountry"></div>
+
+        <label for="selectSource">Select Source:</label>
+        <input type="text" id="sourceSearch" placeholder="Search Sources">
+        <select id="selectSource"></select>
+
+        <label for="selectRating">Select Rating:</label>
+        <input type="text" id="ratingSearch" placeholder="Search Ratings">
+        <select id="selectRating"></select>
+
+        <button type="submit">Generate CSV</button>        
+        </form>
+        <button id="downloadButton" style="display:none">Download CSV</button>
+
+        <div id="successMessage" style="display:none">
+            Data has been downloaded as CSV.
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
