@@ -14,7 +14,9 @@
         <form id="dataForm">
         <label for="selectDepartment">Select Department:</label>
         <input type="text" id="departmentSearch" placeholder="Search departments">
-        <select id="selectDepartment"></select>
+        <select id="selectDepartment">
+            <option>Select a department</option>
+        </select>
 
         <label for="selectEquipment">Select Equipment:</label>
         <input type="text" id="equipmentSearch" placeholder="Search equipments">
@@ -35,9 +37,17 @@
         <input type="text" id="areaSearch" placeholder="Search areas">
         <select id="selectArea"></select>
 
+        <label>New Area</label>
+        <input type="text" id="newArea" placeholder="Enter New Area">
+        <div id="newareabtn">add</div>
+
         <label for="selectObservation">Select Observation:</label>
         <input type="text" id="observationSearch" placeholder="Search Observations">
         <select id="selectObservation"></select>
+
+        <label>New Observation</label>
+        <input type="text" id="newObservation" placeholder="Enter New Observation">
+        <div id="newobsbtn">add</div>
 
         <label for="selectReference">Select Reference:</label>
         <select id="selectReference"></select>
@@ -49,9 +59,13 @@
         <input type="text" id="sourceSearch" placeholder="Search Sources">
         <select id="selectSource"></select>
 
+        <label>New Source</label>
+        <input type="text" id="newSource" placeholder="Enter New Source">
+        <div id="newsrcbtn">add</div>
+
         <label for="selectRating">Select Rating:</label>
-        <input type="text" id="ratingSearch" placeholder="Search Ratings">
         <select id="selectRating"></select>
+
 
         <button type="submit">Generate CSV</button>        
         </form>

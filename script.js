@@ -51,6 +51,7 @@ document.getElementById("dataForm").addEventListener("submit", function (e) {
 
 document.getElementById("downloadButton").addEventListener("click", function () {
     downloadCSV();
+    csvData = ''
 });
 
 window.addEventListener("beforeunload", function (e) {
@@ -99,6 +100,10 @@ function populateDropdowns(data) {
     ratingSelect.innerHTML = '';
 
     if (data.departments && data.departments.length > 0) {
+        const option = document.createElement('option');
+        option.textContent = "Select a department"
+        departmentSelect.appendChild(option);
+
         data.departments.forEach(department => {
             const option = document.createElement('option');
             option.value = department.name;
@@ -108,6 +113,10 @@ function populateDropdowns(data) {
     }
 
     if (data.areas && data.areas.length > 0) {
+        const option = document.createElement('option');
+        option.textContent = "Select an area"
+        areaSelect.appendChild(option);
+
         data.areas.forEach(area => {
             const option = document.createElement('option');
             option.value = area.area;
@@ -116,7 +125,107 @@ function populateDropdowns(data) {
         });
     }
 
+    document.getElementById("newsrcbtn").addEventListener("click", function () {
+        sourceSelect.innerHTML = ''
+
+        const newsrc = newSource.value.toLowerCase();
+        const option = document.createElement('option');
+        option.textContent = newsrc;
+        option.value = newsrc;
+        sourceSelect.appendChild(option);
+        sourceSelect.value = newsrc;
+
+        data.sources.forEach(src => {
+            const option = document.createElement('option');
+            option.value = src.source;
+            option.textContent = src.source;
+            sourceSelect.appendChild(option);
+        });
+    });
+
+    document.getElementById("newareabtn").addEventListener("click", function () {
+        const newAreaInput = document.getElementById("newArea");
+        const newAreaName = newAreaInput.value.toLowerCase();
+    
+        if (newAreaName.trim() === "") {
+            alert("Please enter a valid area name.");
+            return;
+        }
+    
+        // Add the new area to the selectArea dropdown
+        const areaSelect = document.getElementById("selectArea");
+        const newAreaOption = document.createElement('option');
+        newAreaOption.textContent = newAreaName;
+        newAreaOption.value = newAreaName;
+        areaSelect.appendChild(newAreaOption);
+        areaSelect.value = newAreaName;
+    
+        
+        observationSelect.innerHTML = '';
+
+        const newOption = document.createElement('option');
+        newOption.textContent = "Select an Observation";
+        newOption.value = "NA";
+        observationSelect.appendChild(newOption);
+        observationSelect.value = "NA"
+
+            data.observation.forEach(obsId => {
+                const observation = data.observation.find(obs => obs.id === obsId.id);
+                if (observation) {
+                    const option = document.createElement('option');
+                    option.value = observation.observation;
+                    option.textContent = observation.observation; 
+                    observationSelect.appendChild(option);
+                }
+            });
+
+        newAreaInput.value = '';
+    });
+
+    document.getElementById("newobsbtn").addEventListener("click", function () {
+        const newObsInput = document.getElementById("newObservation");
+        const newObsName = newObsInput.value.toLowerCase();
+    
+        if (newObsName.trim() === "") {
+            alert("Please enter a valid observation.");
+            return;
+        }
+    
+        // Add the new area to the selectArea dropdown
+        const observationSelect = document.getElementById("selectObservation");
+        const newObsOption = document.createElement('option');
+        newObsOption.textContent = newObsName;
+        newObsOption.value = newObsName;
+        observationSelect.appendChild(newObsOption);
+        observationSelect.value = newObsName;
+    
+        // observationSelect.innerHTML = '';
+
+        // const newOption = document.createElement('option');
+        // newOption.textContent = "Select an Observation";
+        // newOption.value = "NA";
+        // observationSelect.appendChild(newOption);
+        // observationSelect.value = "NA"
+
+        //     data.observation.forEach(obsId => {
+        //         const observation = data.observation.find(obs => obs.id === obsId.id);
+        //         if (observation) {
+        //             const option = document.createElement('option');
+        //             option.value = observation.observation;
+        //             option.textContent = observation.observation; 
+        //             observationSelect.appendChild(option);
+        //         }
+        //     });
+
+        newObsInput.value = '';
+    });
+    
+
     if (data.sources && data.sources.length > 0) {
+        const option = document.createElement('option');
+        option.textContent = "Select a source"
+        sourceSelect.appendChild(option);
+
         data.sources.forEach(src => {
             const option = document.createElement('option');
             option.value = src.source;
@@ -126,6 +235,10 @@ function populateDropdowns(data) {
     }
 
     if(data.ratings && data.ratings.length>0){
+        const option = document.createElement('option');
+        option.textContent = "Select a rating"
+        ratingSelect.appendChild(option);
+
         data.ratings.forEach(rat=>{
             const option = document.createElement('option');
             option.value = rat.rating;
@@ -162,6 +275,10 @@ function populateDropdowns(data) {
 
                 const filteredEquipment = data.equipments.filter(equipment => equipment.depId === selectedDepartmentId);
 
+                const option = document.createElement('option');
+                option.textContent = "Select an equipment"
+                selectEquipment.appendChild(option);
+
                 filteredEquipment.forEach(equipment => {
                     const option = document.createElement('option');
                     option.value = equipment.name;
@@ -188,6 +305,59 @@ function populateDropdowns(data) {
         }
     });
 
+    sourceSearch.addEventListener("input", function(){
+        const searchValue = sourceSearch.value.toLowerCase();
+        const sourceOptions = selectSource.getElementsByTagName("option");
+
+        for (let i = 0; i < sourceOptions.length; i++) {
+            const option = sourceOptions[i];
+            const sourceName = option.textContent.toLowerCase();
+
+            if (sourceName.indexOf(searchValue) === -1) {
+                option.style.display = "none";
+            } else {
+                option.style.display = "block";
+            }
+        }
+    })
+
+
+    areaSearch.addEventListener("input", function(){
+        const searchValue = areaSearch.value.toLowerCase();
+        const areaOptions = selectArea.getElementsByTagName("option");
+
+        for (let i = 0; i < areaOptions.length; i++) {
+            const option = areaOptions[i];
+            const areaName = option.textContent.toLowerCase();
+
+            if (areaName.indexOf(searchValue) === -1) {
+                option.style.display = "none";
+            } else {
+                option.style.display = "block";
+            }
+        }
+    })
+
+    
+
+    observationSearch.addEventListener("input", function(){
+        const searchValue = observationSearch.value.toLowerCase();
+        const obsOptions = selectObservation.getElementsByTagName("option");
+
+        for (let i = 0; i < obsOptions.length; i++) {
+            const option = obsOptions[i];
+            const obsName = option.textContent.toLowerCase();
+
+            if (obsName.indexOf(searchValue) === -1) {
+                option.style.display = "none";
+            } else {
+                option.style.display = "block";
+            }
+        }
+    })
+
+    
+
     selectEquipment.addEventListener("change", function () {
         const selectedEquipmentName = selectEquipment.value;
 
@@ -210,6 +380,10 @@ function populateDropdowns(data) {
             const uniqueObservationIds = [...new Set(filteredObservations.map(obs => obs.observationId))];
             observationSelect.innerHTML = '';
 
+            const option = document.createElement('option');
+            option.textContent = "Select an observation"
+            observationSelect.appendChild(option);
+
             uniqueObservationIds.forEach(obsId => {
                 const observation = data.observation.find(obs => obs.id === obsId);
                 if (observation) {
@@ -229,6 +403,10 @@ function populateDropdowns(data) {
             const filteredRefs = data.obsRef.filter(ref => ref.obsId === obsId);
             const uniqueRefIds = [...new Set(filteredRefs.map(ref => ref.refId))];
             referenceSelect.innerHTML = '';
+
+            const option = document.createElement('option');
+            option.textContent = "Select a reference"
+            referenceSelect.appendChild(option);
 
             uniqueRefIds.forEach(refId => {
                 const reference = data.references.find(ref=>ref.id===refId);
@@ -257,3 +435,5 @@ function populateDropdowns(data) {
 document.getElementById("uploadButton").addEventListener("click", function () {
     document.getElementById("dataFile").click();
 });
+
+
