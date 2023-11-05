@@ -1,41 +1,125 @@
-body {
-    font-family: Arial, sans-serif;
-}
+
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
+.button-container {
+    display: flex; 
+    align-items: center; 
     margin-top: 10px;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
-
-button {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+.button-container button {
+    background-color: #000; 
+    color: #fff; 
+    padding: 10px 20px;
+    font-size: 12px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px; 
 }
 
-button:hover {
-    background-color: #0056b3;
+input[type="file"] {
+display: none;
+}
+
+.centered-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+  
+  form {
+    border: 2px solid #000; /* Black border around the form content */
+    padding: 20px; /* Add padding for spacing */
+    background-color: #fff; /* Optional white background for the form content */
+    max-width: 800px; /* Limit the maximum width for larger screens */
+    width: 100%; /* Full width for smaller screens */
+  }
+  
+  .form-component {
+    margin: 10px 0; /* Add vertical margin between form components */
+    display: flex; /* Display as flex column by default */
+    align-items: center; /* Center vertically within the column */
+  }
+  
+  /* Style for labels for spacing between components */
+  .form-component label {
+    margin-right: 10px; /* Add horizontal margin between labels and their respective inputs/selects */
+  }
+  /* Style for the submit button */
+  button[type="submit"] {
+    background-color: #000; /* Black button */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Slightly rounded button */
+  }
+  
+ /* Style for the submit button with a smaller height */
+button[type="submit"] {
+    background-color: #000; /* Black button */
+    color: #fff; /* White text color */
+    padding: 8px 20px; /* Reduced padding for a smaller height */
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Slightly rounded button */
+  }
+  
+  /* Optional: Add some hover and active states for the button */
+  button[type="submit"]:hover {
+    background-color: #333; /* Slightly darker on hover */
+  }
+  
+  button[type="submit"]:active {
+    background-color: #666; /* Even darker when clicked */
+  }
+  
+  /* Responsive style for smaller screens */
+  @media (max-width: 768px) {
+    .centered-box {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  
+    form {
+      max-width: 100%; /* Full width for smaller screens */
+    }
+  }
+  
+  /* Style for the "Add" buttons */
+.add-button {
+    display: inline-block;
+    padding: 5px 10px; /* Adjust padding for button size */
+    background-color: #000; /* Black button background */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer;
+    margin-left: 10px; /* Add some margin to separate buttons */
+  }
+  
+  /* Optional: Add some hover and active states for the buttons */
+  .add-button:hover {
+    background-color: #333; /* Slightly darker on hover */
+  }
+  
+  .add-button:active {
+    background-color: #666; /* Even darker when clicked */
+  }
+  
+ /* Add spacing between the search input box and the dropdown select */
+.input-spacing {
+    margin-right: 10px; /* Adjust the margin as needed to control the spacing */
+}
+
+.form-section{
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

@@ -2,79 +2,160 @@
 <html>
 <head>
     <title>CSV Generator</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Upload Data</h2>
-        <input type="file" id="dataFile" accept=".json">
-        <button id="uploadButton">Upload Data</button>
-
-        <h2>Select Data</h2>
-        <form id="dataForm">
-        <label for="selectDepartment">Select Department:</label>
-        <input type="text" id="departmentSearch" placeholder="Search departments">
-        <select id="selectDepartment">
-            <option>Select a department</option>
-        </select>
-
-        <label for="selectEquipment">Select Equipment:</label>
-        <input type="text" id="equipmentSearch" placeholder="Search equipments">
-        <select id="selectEquipment"></select>
-
-           
-        <label>Equipment id:</label>
-        <div id="selectEquipmentId"></div>
-
-        <label>Equipment Type:</label>
-        <div id="selectEquipmentType"></div>
-
-        
-        <label>Equipment Location:</label>
-        <div id="selectEquipmentLocation"></div>
-
-        <label for="selectArea">Select Area:</label>
-        <input type="text" id="areaSearch" placeholder="Search areas">
-        <select id="selectArea"></select>
-
-        <label>New Area</label>
-        <input type="text" id="newArea" placeholder="Enter New Area">
-        <div id="newareabtn">add</div>
-
-        <label for="selectObservation">Select Observation:</label>
-        <input type="text" id="observationSearch" placeholder="Search Observations">
-        <select id="selectObservation"></select>
-
-        <label>New Observation</label>
-        <input type="text" id="newObservation" placeholder="Enter New Observation">
-        <div id="newobsbtn">add</div>
-
-        <label for="selectReference">Select Reference:</label>
-        <select id="selectReference"></select>
-
-        <label>Reference Country:</label>
-        <div id="selectReferenceCountry"></div>
-
-        <label for="selectSource">Select Source:</label>
-        <input type="text" id="sourceSearch" placeholder="Search Sources">
-        <select id="selectSource"></select>
-
-        <label>New Source</label>
-        <input type="text" id="newSource" placeholder="Enter New Source">
-        <div id="newsrcbtn">add</div>
-
-        <label for="selectRating">Select Rating:</label>
-        <select id="selectRating"></select>
-
-
-        <button type="submit">Generate CSV</button>        
-        </form>
-        <button id="downloadButton" style="display:none">Download CSV</button>
-
-        <div id="successMessage" style="display:none">
-            Data has been downloaded as CSV.
+    <header class="header">
+        <div class="container">
+            <input type="file" id="dataFile" accept=".json">
+            <div class="button-container">
+                <button id="uploadButton">Upload Data</button>
+                <button id="downloadButton">Download All Observations</button>
+            </div>
         </div>
+    </header>
+    
+    
+    <div class="centered-box">
+        <form id="dataForm">
+            
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectDepartment">Select Department:</label>
+                    <input type="text" id="departmentSearch" placeholder="Add department filter" class="input-spacing">
+                    <select id="selectDepartment">
+                        <option>Select a department</option>
+                    </select>
+                </div>
+            </div>
+                       
+            <hr />
 
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectEquipment">Select Equipment:</label>
+                    <input type="text" id="equipmentSearch" placeholder="Add equipment filter" class="input-spacing">
+                    <select id="selectEquipment">
+                        <option>Select an equipment</option>
+                    </select>
+                </div>
+    
+                <div class="equip-details">      
+                    <div class="form-component">
+                        <label>Equipment id:</label>
+                        <div id="selectEquipmentId">
+                        </div>
+                    </div>
+            
+                    <div class="form-component">
+                        <label>Equipment Type:</label>
+                        <div id="selectEquipmentType">
+                        </div>
+                    </div>
+            
+                    <div class="form-component">
+                        <label>Equipment Location:</label>
+                        <div id="selectEquipmentLocation">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <hr />
+
+
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectArea">Select Area:</label>
+                    <input type="text" id="areaSearch" placeholder="Add area filter" class="input-spacing">
+                    <select id="selectArea">
+                        <option>Select an area</option>
+                    </select>
+                </div>
+    
+                
+                <div class="form-component">
+                    <label>New Area</label>
+                    <input type="text" id="newArea" placeholder="Enter New Area">
+                    <div id="newareabtn" class="add-button">add</div>
+                </div>
+            </div>
+
+            <hr />
+    
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectObservation">Select Observation:</label>
+                    <input type="text" id="observationSearch" placeholder="Add observation filter" class="input-spacing">
+                    <select id="selectObservation">
+                        <option>Select an observation</option>
+                    </select>
+                </div>
+        
+                <div class="form-component">
+                    <label>New Observation</label>
+                    <input type="text" id="newObservation" placeholder="Enter New Observation">
+                    <div id="newobsbtn" class="add-button">add</div>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectReference">Select Reference:</label>
+                    <select id="selectReference">
+                        <option>Select a reference</option>
+                    </select>
+                </div>
+    
+                
+                <div class="form-component">
+                      <label>Reference Country:</label>
+                      <div id="selectReferenceCountry">
+                      </div>
+                </div>    
+            </div>
+            
+            <hr />
+
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectSource">Select Source:</label>
+                    <input type="text" id="sourceSearch" placeholder="Add source filter" class="input-spacing">
+                    <select id="selectSource">
+                        <option>Select a source</option>
+                    </select>
+                </div>
+    
+                <div class="form-component">
+                    <label>New Source</label>
+                    <input type="text" id="newSource" placeholder="Enter New Source">
+                    <div id="newsrcbtn" class="add-button">add</div>
+                </div>
+            </div>
+            
+            <hr />
+
+            <div class="form-section">
+                <div class="form-component">
+                    <label for="selectRating">Select Rating:</label>
+                    <select id="selectRating">
+                        <option>Select a rating</option>
+                    </select>
+                </div>
+        
+            </div>
+
+            <hr />
+
+            <div class="form-component">
+                <label for="selectComment">Comment:</label>
+                <input type="text" id="comment" placeholder="Add a comment" class="input-spacing">
+            </div>
+
+            <button type="submit" id="dataFormBtn">Submit Observation</button>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
