@@ -78,6 +78,10 @@ document.getElementById("dataFormBtn").addEventListener("click", function (e) {
 
     document.getElementById("downloadButton").style.display = "block";
     document.getElementById("dataForm").reset();
+    document.getElementById("selectEquipmentId").innerText = "";
+    document.getElementById("selectEquipmentType").innerText = "";
+    document.getElementById("selectEquipmentLocation").innerText = "";
+    document.getElementById("selectReferenceCountry").innerText = "";
     document.getElementById("successMessage").style.display = "block";
 
     departmentSelect.innerHTML = '';

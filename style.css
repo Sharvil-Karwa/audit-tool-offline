@@ -1,4 +1,6 @@
-
+*{
+  font-family: sans-serif
+}
 
 .container {
     display: flex; 
@@ -123,3 +125,4 @@ button[type="submit"] {
     padding-top: 2px;
     padding-bottom: 2px;
 }
+
