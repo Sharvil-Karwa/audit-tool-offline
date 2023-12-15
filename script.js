@@ -1,12 +1,12 @@
 let jsonData = {};
 
-let csvData = "department,equipment,eq_id,type,location,area,observation,reference,refCountry,comment,source,rating,new_area,new_obs,new_src,audit_name,audit_id,country\n";
+let csvData = "department,equipment,eq_id,type,location,area,observation,reference,refCountry,comment,source,rating,new_area,new_obs,new_src,audit_name,audit_id\n";
 
 let new_area = false;
 let new_obs = false;
 let new_src = false;
 
-let download = false;
+let download = true;
 
 let auditName = "";
 let auditId = "";
@@ -73,8 +73,26 @@ document.getElementById("dataFormBtn").addEventListener("click", function (e) {
         return;
     }
 
+    if(new_area===true){
+        new_area = true;
+    }
+    else new_area = false;
 
-    csvData += `${department},${equipment},${equipmentId},${equipmentType},${equipmentLocation},${area},${observation},${reference},${refCountry},${comment ? comment : "N/A"},${src},${rat},${new_area},${new_obs},${new_src},${auditName},${auditId},${refCountry}\n`;
+    if(new_src===true){
+        new_src = true;
+    }
+    else new_src = false;
+
+    if(new_obs===true){
+        new_obs = true;
+    }
+    else new_obs = false;
+
+
+
+    // csvData += `${department ? department : "n/a"},${equipment ? equipment : "n/a"},${equipmentId ? equipmentId : "n/a"},${equipmentType ? equipmentType : "n/a"},${equipmentLocation ? equipmentLocation : "n/a"},${area ? area : "n/a"},${observation ? observation : "n/a"},${reference ? reference : "n/a"},${refCountry ? refCountry : "n/a"},${comment ? comment : "n/a"},${src ? src : "n/a"},${rat ? rat : "n/a"},${new_area},${new_obs},${new_src},${auditName},${auditId}\n`;
+
+    csvData += `${department ? `"${department}"` : "n/a"},${equipment ? `"${equipment}"` : "n/a"},${equipmentId ? `"${equipmentId}"` : "n/a"},${equipmentType ? `"${equipmentType}"` : "n/a"},${equipmentLocation ? `"${equipmentLocation}"` : "n/a"},${area ? `"${area}"` : "n/a"},${observation ? `"${observation}"` : "n/a"},${reference ? `"${reference}"` : "n/a"},${refCountry ? `"${refCountry}"` : "n/a"},${comment ? `"${comment}"` : "n/a"},${src ? `"${src}"` : "n/a"},${rat ? `"${rat}"` : "n/a"},${new_area},${new_obs},${new_src},${auditName},${auditId}\n`;
 
     document.getElementById("downloadButton").style.display = "block";
     document.getElementById("dataForm").reset();
@@ -127,6 +145,9 @@ document.getElementById("dataFile").addEventListener("change", function (event) 
 });
 
 function populateDropdowns(data) {
+
+    document.getElementById("auditName").innerText = data.auditName
+
     const departmentSelect = document.getElementById("selectDepartment");
     const equipmentSelect = document.getElementById("selectEquipment");
     const areaSelect = document.getElementById("selectArea");

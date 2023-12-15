@@ -37,6 +37,7 @@ display: none;
   
   form {
     border: 2px solid #000; /* Black border around the form content */
+    border-radius: 0.5%;
     padding: 20px; /* Add padding for spacing */
     background-color: #fff; /* Optional white background for the form content */
     max-width: 800px; /* Limit the maximum width for larger screens */
@@ -58,23 +59,14 @@ display: none;
     background-color: #000; /* Black button */
     color: #fff; /* White text color */
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
     border-radius: 5px; /* Slightly rounded button */
   }
   
  /* Style for the submit button with a smaller height */
-button[type="submit"] {
-    background-color: #000; /* Black button */
-    color: #fff; /* White text color */
-    padding: 8px 20px; /* Reduced padding for a smaller height */
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px; /* Slightly rounded button */
-  }
-  
+
   /* Optional: Add some hover and active states for the button */
   button[type="submit"]:hover {
     background-color: #333; /* Slightly darker on hover */
@@ -126,3 +118,81 @@ button[type="submit"] {
     padding-bottom: 2px;
 }
 
+/* Style for dropdown selects */
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Style for dropdown when it's focused */
+select:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #000; /* Change the border color when focused */
+}
+
+/* Style for input elements */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Style for input elements when they are focused */
+input[type="text"]:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #000; /* Change the border color when focused */
+}
+
+/* Style for "Upload Data" button */
+#uploadButton {
+  background-color: #ffffff; /* Blue button */
+  color: #000000; /* White text color */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: black 1px solid;
+  cursor: pointer;
+  border-radius: 5px; /* Slightly rounded button */
+}
+
+/* Style for "Download All Observations" button */
+#downloadButton {
+  background-color: #000; /* Black button */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Slightly rounded button */
+}
+
+/* Optional: Add some hover and active states for the buttons */
+#uploadButton:hover, #downloadButton:hover {
+  opacity: 0.8; /* Slightly reduce opacity on hover */
+}
+
+#uploadButton:active, #downloadButton:active {
+  background-color: #0056b3; /* Slightly darker when clicked */
+}
+
+/* Style for <hr> elements */
+hr {
+  border: none;
+  border-top: 1px solid #000000; /* Solid gray line */
+  margin: 20px 0; /* Add spacing above and below the <hr> */
+}
+
+/* Style for labels */
+label {
+  font-size: 14px; /* Adjust the font size as needed */
+  color: #333; /* Text color for labels */
+  margin-right: 10px; /* Add spacing to the right of labels */
+}
